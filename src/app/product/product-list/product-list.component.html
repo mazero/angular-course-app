@@ -1,5 +1,6 @@
 <h3>Product list</h3>
 <div>
+    <button (click)="toggleImage()">Show/Hide images</button>
     <table *ngIf="products.length > 0; else noProductTemplate"
         border="1"
         cellspacing="0"
@@ -7,7 +8,7 @@
         <thead>
             <tr>
                 <td>ID</td>
-                <td>Image</td>
+                <td *ngIf="displayImage">Image</td>
                 <td>Name</td>
                 <td>Code</td>
                 <td>Release date</td>
@@ -19,7 +20,7 @@
         <tbody>
             <tr *ngFor="let product of products">
                 <td>#{{ product.id }}</td>
-                <td>
+                <td *ngIf="displayImage">
                     <img [src]="product.imageUrl" width="30px" />
                 </td>
                 <td>{{ product.productName }}</td>
