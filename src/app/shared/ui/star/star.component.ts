@@ -14,4 +14,8 @@ export class StarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public logIt(value: number): void {
+    console.log('The clicked value is', value)
+  }
+
 }
