@@ -17,6 +17,8 @@ export interface Product {
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  public searchTerm: string = ''
+  public myBorderSize: number = 1
   public displayImage: boolean = true
   public products: Product[] = [
     {
@@ -78,6 +80,14 @@ export class ProductListComponent implements OnInit {
 
   public toggleImage(): void {
     this.displayImage = !this.displayImage
+  }
+
+  public getFilteredProducts(): Product[] {
+    const term = this.searchTerm.toLowerCase()
+    return this.products.filter(product => {
+      const name = product.productName.toLowerCase()
+      return name.indexOf(term) > -1
+    })
   }
 
 }
