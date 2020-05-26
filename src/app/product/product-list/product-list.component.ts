@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/shared/model/product';
+import { ProductService } from 'src/app/shared/model/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +13,9 @@ export class ProductListComponent implements OnInit {
   public displayImage: boolean = true
   public products: IProduct[] = []
 
-  constructor() { }
+  constructor(productService: ProductService) {
+    this.products = productService.getProducts()
+  }
 
   ngOnInit(): void {
   }

@@ -61,6 +61,7 @@ export class ProductService {
   constructor() { }
 
   public getProducts(): IProduct[] {
-    return this.productsFromAPI
+    // Use the spread operator to return a cloned version of the array
+    return [...this.productsFromAPI]
   }
 }
