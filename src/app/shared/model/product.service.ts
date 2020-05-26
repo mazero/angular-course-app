@@ -59,4 +59,8 @@ export class ProductService {
   ]
 
   constructor() { }
+
+  public getProducts(): IProduct[] {
+    return this.productsFromAPI
+  }
 }
