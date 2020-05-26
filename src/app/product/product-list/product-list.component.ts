@@ -1,15 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Product {
-  id: number
-  productName: string
-  productCode: string
-  releaseDate: string
-  description: string
-  price: number
-  starRating: number
-  imageUrl: string
-}
+import { IProduct } from 'src/app/shared/model/product';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +10,7 @@ export class ProductListComponent implements OnInit {
   public searchTerm: string = ''
   public myBorderSize: number = 1
   public displayImage: boolean = true
-  public products: Product[] = [
+  public products: IProduct[] = [
     {
         "id": 1,
         "productName": "Leaf Rake",
@@ -82,7 +72,7 @@ export class ProductListComponent implements OnInit {
     this.displayImage = !this.displayImage
   }
 
-  public getFilteredProducts(): Product[] {
+  public getFilteredProducts(): IProduct[] {
     const term = this.searchTerm.toLowerCase()
     return this.products.filter(product => {
       const name = product.productName.toLowerCase()
