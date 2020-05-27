@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from './product';
+import { HttpClient } from '@angular/common/http';
+
+import { map, tap } from 'rxjs/operators'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +62,18 @@ export class ProductService {
     }
   ]
 
-  constructor() { }
+  constructor(public http: HttpClient) {
+    this.fetch()
+  }
+
+  public fetch() {
+    // Create an observable from the get method of HttpClient service
+    // which will return a IProduct[] object
+    this.http.get<IProduct[]>('http://localhost:3000/products').pipe(
+      map(products => products.map(product => new Product(product))),
+      tap(products => console.log(`Products number: ${products.length}`))
+    ).subscribe()
+  }
 
   public getProducts(): IProduct[] {
     // Use the spread operator to return a cloned version of the array

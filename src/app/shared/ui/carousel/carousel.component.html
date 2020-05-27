@@ -1,0 +1,4 @@
+<div class="wrapper">
+    <button type="button" (click)="move(-1)"><--</button> {{ currentIndex }} <button type="button" (click)="move(1)">--></button>
+    <img [src]="images[ currentIndex ]" [style.width.px]="maxWidth" />
+</div>
