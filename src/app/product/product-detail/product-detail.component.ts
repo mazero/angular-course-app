@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
     )
 
     this.product$ = currentId$.pipe(
-      switchMap(id => productService.getProductById(id))
+      switchMap(id => productService.getProductById$(id))
     )
   }
 
