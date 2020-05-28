@@ -73,7 +73,9 @@ export class ProductService {
     this.http.get<IProduct[]>('http://localhost:3000/products').pipe(
       map(products => products.map(product => new Product(product))),
       tap(products => console.log(`Products number: ${products.length}`))
-    ).subscribe()
+    ).subscribe(
+      products => this._products.next(products)
+    )
   }
 
   public getProducts(): IProduct[] {
