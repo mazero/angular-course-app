@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from './product';
+import { IProduct, Product } from './product'
 import { HttpClient } from '@angular/common/http';
 
 import { map, tap } from 'rxjs/operators'
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +61,7 @@ export class ProductService {
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
   ]
-  private _products;
+  private _products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(public http: HttpClient) {
     this.fetch()
