@@ -1,1 +1,4 @@
-<p>product-detail works!</p>
+<button type="button" (click)="goToProducts()">Go back to product</button>>
+
+<!-- Here we cannot yet reach next product as we didn't retrieve the product based on url id :D -->
+<button type="button" [routerLink]="['/products', 1 + 1]">Go to next product!</button>
