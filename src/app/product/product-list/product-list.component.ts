@@ -14,8 +14,8 @@ export class ProductListComponent implements OnInit {
   public displayImage: boolean = true
   public products$: Observable<Product[]>
 
-  constructor(productService: ProductService) {
-    this.products$ = productService.getProducts$()
+  constructor(private productService: ProductService) {
+    this.products$ = this.productService.getProducts$()
   }
 
   ngOnInit(): void {
@@ -23,6 +23,10 @@ export class ProductListComponent implements OnInit {
 
   public toggleImage(): void {
     this.displayImage = !this.displayImage
+  }
+
+  public refreshProducts() {
+    this.productService.fetch()
   }
 
 }
