@@ -62,6 +62,7 @@ export class ProductService {
     }
   ]
   private _products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  private products$: Observable<Product[]> = this._products.asObservable();
 
   constructor(public http: HttpClient) {
     this.fetch()
