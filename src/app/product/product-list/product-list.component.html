@@ -23,7 +23,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let product of products | productSearch:searchTerm">
-                <td>#{{ product.id }}</td>
+                <td>
+                    <a [routerLink]="product.id">#{{ product.id }}</a>
+                </td>
                 <td *ngIf="displayImage">
                     <img [src]="product.imageUrl" width="30px" />
                 </td>
