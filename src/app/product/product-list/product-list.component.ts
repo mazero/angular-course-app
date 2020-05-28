@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/shared/model/product';
+import { Observable } from 'rxjs'
+import { Product } from 'src/app/shared/model/product'
 import { ProductService } from 'src/app/shared/model/product.service';
 
 @Component({
@@ -11,10 +12,10 @@ export class ProductListComponent implements OnInit {
   public searchTerm: string = ''
   public myBorderSize: number = 1
   public displayImage: boolean = true
-  public products: IProduct[] = []
+  public products$: Observable<Product[]>
 
   constructor(productService: ProductService) {
-    this.products = productService.getProducts()
+    this.products$ = productService.getProducts$()
   }
 
   ngOnInit(): void {
@@ -22,14 +23,6 @@ export class ProductListComponent implements OnInit {
 
   public toggleImage(): void {
     this.displayImage = !this.displayImage
-  }
-
-  public getFilteredProducts(): IProduct[] {
-    const term = this.searchTerm.toLowerCase()
-    return this.products.filter(product => {
-      const name = product.productName.toLowerCase()
-      return name.indexOf(term) > -1
-    })
   }
 
 }
