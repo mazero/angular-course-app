@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IProduct } from 'src/app/shared/model/product';
+import { ProductService } from 'src/app/shared/model/product.service';
 
 const HTTP_URL_PATTERN: string = '^((http[s]?):\\/)\\/?([^:\\/\\s]+)((\\/\\w+)*)([\\w\\-\\.]+[^#?\\s]+)(.*)?(#[\\w\\-]+)?$'
 
@@ -12,7 +14,7 @@ export class ProductEditComponent implements OnInit {
 
   public productForm: FormGroup
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, public productService: ProductService) {
     // We create our Form for product
     this.productForm = fb.group({
       id: [null], // It is the same as `id: new FormControl(null)`
@@ -37,7 +39,11 @@ export class ProductEditComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log('Form submitted')
+    if (this.productForm.valid) {
+      let data: IProduct = this.productForm.value
+      //  this.productService.save(data)
+    }
+
   }
 
 }
