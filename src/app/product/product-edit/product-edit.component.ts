@@ -36,4 +36,8 @@ export class ProductEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public onSubmit() {
+    console.log('Form submitted')
+  }
+
 }

@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="productForm">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
         <p>
             <label>
                 id: <input id="id" type="number" formControlName="id" />
