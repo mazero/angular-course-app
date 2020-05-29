@@ -10,6 +10,17 @@
                 productName: <input id="productName" type="text" formControlName="productName" />
             </label>
         </p>
+        <div *ngIf="productForm.get('productName').invalid && (productForm.get('productName').dirty || productForm.get('productName').touched)">
+            <div *ngIf="productForm.get('productName').errors.required">
+                The name is required
+            </div>
+            <div *ngIf="productForm.get('productName').errors.minlength as minlength">
+                The name should be at least {{ minlength.requiredLength }} (actual: {{ minlength.actualLength }})
+            </div>
+            <div *ngIf="productForm.get('productName').errors.maxlength as maxlength">
+                The name should be {{ maxlength.requiredLength }} max length (actual: {{ maxlength.actualLength }})
+            </div>
+        </div>
         <p>
             <label>
                 productCode: <input id="productCode" type="text" formControlName="productCode" />
