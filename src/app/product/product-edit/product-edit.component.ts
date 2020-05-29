@@ -39,9 +39,12 @@ export class ProductEditComponent implements OnInit {
   }
 
   public onSubmit() {
+    debugger
     if (this.productForm.valid) {
       let data: IProduct = this.productForm.value
-      //  this.productService.save(data)
+      this.productService.save(data).subscribe(
+        product => console.log(`My product was saved ${product.id}`)
+      )
     }
 
   }
