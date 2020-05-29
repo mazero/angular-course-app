@@ -7,7 +7,7 @@
         </p>
         <p>
             <label>
-                productName: <input id="productName" type="text" formControlName="productName" />
+                productName: <input id="productName" required type="text" formControlName="productName" />
             </label>
         </p>
         <div *ngIf="productForm.get('productName').invalid && (productForm.get('productName').dirty || productForm.get('productName').touched)">
