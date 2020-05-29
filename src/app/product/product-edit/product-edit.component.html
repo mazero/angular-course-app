@@ -52,7 +52,7 @@
             </label>
         </p>
 
-        <button type="submit">Save the product!</button>
+        <button type="submit" [disabled]="productForm.invalid">Save the product!</button>
 
     </form>
 </div>
