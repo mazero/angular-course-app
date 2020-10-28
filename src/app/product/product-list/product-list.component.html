@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of getFilteredProducts()">
+            <tr *ngFor="let product of products | productSearch:searchTerm">
                 <td>#{{ product.id }}</td>
                 <td *ngIf="displayImage">
                     <img [src]="product.imageUrl" width="30px" />
