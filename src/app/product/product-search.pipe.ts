@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Product } from './product-list/product-list.component';
+import { IProduct } from '../shared/model/product';
 
 @Pipe({
   name: 'productSearch'
 })
 export class ProductSearchPipe implements PipeTransform {
 
-  transform(value: Product[], term: string = ''): Product[] {
+  transform(value: IProduct[], term: string = ''): IProduct[] {
     if (Array.isArray(value)) {
       return value.filter(product => {
         const name = product.productName.toLowerCase()
